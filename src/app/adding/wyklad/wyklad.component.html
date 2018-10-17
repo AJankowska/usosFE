@@ -1,0 +1,7 @@
+<button class="btn btn-default" (click)="back()">Back</button>
+<div class="jumbotron">
+  <label>Co</label> <input [(ngModel)]="co"><br>
+ <label>kiedy</label><input [(ngModel)]="kiedy" type="date"><br>
+<label>Notatka</label><br><textarea #notatka></textarea><br>
+ <button class="btn btn-default" (click)="add(notatka.value)"></button>
+</div>

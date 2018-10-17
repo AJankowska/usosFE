@@ -1,0 +1,22 @@
+<button class="btn btn-default" (click)="back()">Back</button>
+<div class="jumbotron">
+    Co<input type="text" [(ngModel)]="co">
+    Kiedy<input type="data" [(ngModel)]="kiedy">
+    <div *ngIf="subject.laborki">Wejsciowka 
+      <select [(ngModel)]="wejsciowka">
+        <option value="null" active>...</option>
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+      Sprawko <select [(ngModel)]="sprawko">
+          <option value="null" active>...</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+    </div>
+    <div class="notatka" *ngIf="!subject.projekt">
+     Notatka <br><textarea #notatka></textarea>
+     <button class="btn btn-default" (click)="add(notatka.value)"></button>
+    </div>
+    <button class="btn btn-default" *ngIf="subject.projekt" (click)="add('a')"></button>
+    </div>

@@ -1,0 +1,45 @@
+.row{
+    height:auto;
+}
+.notes{
+    border: 1px solid blue;
+    box-shadow: 1px 1px 1px 1px rgba(53, 53, 230, 0.288);
+   
+}
+.wyklad{
+    margin:0px;
+}
+#labNotes{
+    margin:20px 0px 0px 0px;
+}
+.wyklad{
+    border: 1px solid blue;
+    box-shadow: 1px 1px 1px 1px rgba(53, 53, 230, 0.288);
+}
+#wykNotes{
+    margin:0px;
+}
+.lab{
+    border: 1px solid blue;
+    box-shadow: 1px 1px 1px 1px rgba(53, 53, 230, 0.288);
+    margin:20px 0px 0px 0px;
+}
+.title{
+    border-bottom: 1px solid black;
+}
+.btn-small{
+   
+    font-size: 9px;
+   padding:5px;
+   margin:5px; 
+}
+.single{
+    margin: 5px -15px;
+    background-color: rgb(185, 181, 181,0.45);
+}
+.second-view{
+ display:none;
+}
+.first-view{
+display: block;
+}

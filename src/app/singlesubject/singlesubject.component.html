@@ -1,0 +1,317 @@
+<div class="container-fluid" id="body">
+    <button class="btn btn-default" [routerLink]="['/']">Back to list</button>
+    <div class="row" *ngIf="subject.wyklad">
+            <div class="col-6  wyklad " >   
+                <!-- buttons --> 
+                <div class="row">          
+                    <div class="col-8 title ">
+                    </div>
+                    <div class="title col-4">
+                        <button class="btn btn-small btn-secondary" [routerLink]="['/',subject._id,'wyklad','1']"><i class="fa fa-plus"></i></button>
+                        <button class="btn btn-small btn-secondary" (click)="editing(1)"><i class="fa fa-wrench"></i></button>
+                        <button class="btn btn-small btn-secondary" (click)="trash_wyklad=!trash_wyklad"><i class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+                    <!-- buttons end --> 
+                    <!-- start all wyklad.. --> 
+                 <div *ngFor="let w of subject.wyklad, let i = index" (click)="edit(w,'wyklad')" class="single" [ngClass]="{'zaliczone':subject.zaliczone==true,'niezaliczone':subject.zaliczone==false}">
+                     <!-- list element for kolokwium --> 
+                     <div *ngIf="w.co">                    
+                         <div *ngIf="trash_wyklad==true" class="row">
+                            <div class="col-1"><button class="btn btn-small " (click)="deleteItem('wyklad',i)">X</button></div>
+                            <div class="col-3" >{{w.kiedy}}</div>
+                            <div class="col-2">{{w.co}}</div>
+                            <div class="col-2">
+                                    <span *ngIf="subject.zaliczone==true"><i class="fa fa-check"></i></span>
+                                    <span *ngIf="subject.zaliczone==false"><i class="fa fa-times"></i></span>
+                                    <span *ngIf="subject.zaliczone==null"><i class="fa fa-clock"></i></span>
+                            </div>
+
+                            <div class="col-3">{{w.notatka}}</div> 
+                     </div>
+                     <div *ngIf="trash_wyklad==false"class="row">
+                        <div class="col-3" >{{w.kiedy}}</div>
+                        <div class="col-3">{{w.co}}</div>
+                        <div class="col-2">
+                                <span *ngIf="subject.zaliczone==true"><i class="fa fa-check"></i></span>
+                                <span *ngIf="subject.zaliczone==false"><i class="fa fa-times"></i></span>
+                                <span *ngIf="subject.zaliczone==null"><i class="fa fa-clock"></i></span>
+                        </div>
+
+                        <div class="col-4">{{w.notatka}}</div> 
+                    </div>
+                  </div>
+                  <!--end od list element for kolokwium-->
+                  <!--list element for egzamin-->
+                  <div *ngIf="!w.co">                    
+                        <div *ngIf="trash_wyklad==true" class="row">
+                           <div class="col-1"><button class="btn btn-small " (click)="deleteItem('wyklad',i)">X</button></div>
+                           <div class="col-2" >{{w.kiedy}}</div>
+                           <div class="col-2">
+                                   <span *ngIf="subject.zaliczone==true"><i class="fa fa-check"></i></span>
+                                   <span *ngIf="subject.zaliczone==false"><i class="fa fa-times"></i></span>
+                                   <span *ngIf="subject.zaliczone==null"><i class="fa fa-clock"></i></span>
+                           </div>
+
+                           <div class="col-6">{{w.notatka}}</div> 
+                    </div>
+                    <div *ngIf="trash_wyklad==false"class="row">
+                       <div class="col-2" >{{w.kiedy}}</div>
+                       <div class="col-2">
+                               <span *ngIf="subject.zaliczone==true"><i class="fa fa-check"></i></span>
+                               <span *ngIf="subject.zaliczone==false"><i class="fa fa-times"></i></span>
+                               <span *ngIf="subject.zaliczone==null"><i class="fa fa-clock"></i></span>
+                       </div>
+
+                       <div class="col-8">{{w.notatka}}</div> 
+                   </div>
+                 </div>
+                  <!--end od list element for egzamin-->
+                 </div>
+                </div>
+                <!--end od wyklad loop-->
+                <div class="col-6  notes " id="wykNotes">
+                    <div class="row">
+                        <div class="col-8 title"></div>
+                        <div class="title  col-4">
+                            <button class="btn btn-small btn-secondary" [routerLink]="['/',subject._id,'notatka','1']"><i class="fa fa-plus"></i></button>
+                            <button class="btn btn-small btn-secondary" (click)="editing(2)"><i class="fa fa-wrench"></i></button>
+                            <button class="btn btn-small btn-secondary" (click)="trash_wykNotes=!trash_wykNotes"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                         <!-- start all wykladNotes.. --> 
+                        <div *ngFor="let w of subject.wNotatki, let i=index" class="single" (click)="edit(w,'wNotatki')">
+                            <div *ngIf="trash_wykNotes==true" class="row">
+                                <div class="col-1"><button class="btn btn-small" (click)="deleteItem('wNotatki',i)">X</button></div>
+                                <div class="col-2">{{w.kiedy}}</div>
+                                <div class="col-1"></div>
+                                <div class="col-2">Notatka</div>
+                                <div class="col-5">{{w.notatka}}</div> 
+                            </div>
+                            <div *ngIf="trash_wykNotes==false"class="row">
+                                <div class="col-2">{{w.kiedy}}</div>
+                                <div class="col-1"></div>
+                                <div class="col-3">Notatka</div>
+                                <div class="col-6">{{w.notatka}}</div> 
+                            </div>
+                        </div>
+                        <!--end of the wykNotes loop-->
+                </div>
+    </div>
+    <div class="row">
+            <div class="col-6  lab ">
+                    <div class="row">          
+                            <div class="col-8 title ">
+                            </div>
+                            <div class="title col-4">
+                                <button class="btn btn-small btn-secondary"[routerLink]="['/',subject._id,'labcwp','1']"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-small btn-secondary" (click)="editing(3)"><i class="fa fa-wrench"></i></button>
+                                <button class="btn btn-small btn-secondary" (click)="trash_laborki=!trash_laborki"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <!--projekt-->
+            <div *ngFor="let p of subject.projekt, let i=index" (click)="edit(p,'projekt')"class="single" [ngClass]="{'zaliczone':(subject.wejsciowka==true&&subject.sprawko==true),'niezaliczone':(subject.wejsciowka==false||subject.sprawko==false)}">  
+                <div *ngIf="trash_laborki==true" class="row">
+                        <div class="col-1"><button class="btn btn-small " (click)="deleteItem('projekt',i)">X</button></div>
+                        <div class="col-3" >{{p.kiedy}}</div>
+                        <div class="col-7">{{p.co}}</div>
+                        
+                </div>
+                <div *ngIf="trash_laborki==false"class="row">
+                    <div class="col-2" >{{p.kiedy}}</div>
+                    <div class="col-3">{{p.co}}</div>
+                </div>
+            </div>
+            <!--laborki-->
+              <div *ngFor="let l of subject.laborki, let i=index" (click)="edit(l,'laborki')"  class="single" [ngClass]="{'zaliczone':(subject.wejsciowka==true&&subject.sprawko==true),'niezaliczone':(subject.wejsciowka==false||subject.sprawko==false)}">  
+                    <div *ngIf="trash_laborki==true" class="row">
+                            <div class="col-1"><button class="btn btn-small " (click)="deleteItem('laborki',i)">X</button></div>
+                            <div class="col-2" >{{l.kiedy}}</div>
+                            <div class="col-2">{{l.co}}</div>
+                            <div class="col-2">W 
+                                    <span *ngIf="subject.wejsciowka==true"><i class="fa fa-check"></i></span>
+                                    <span *ngIf="subject.wejsciowka==false"><i class="fa fa-times"></i></span>
+                                    <span *ngIf="subject.wejsciowka==null"><i class="fa fa-clock"></i></span>
+                            </div>
+                            <div class="col-2">S
+                                    <span *ngIf="subject.sprawko==true"><i class="fa fa-check"></i></span>
+                                    <span *ngIf="subject.sprawko==false"><i class="fa fa-times"></i></span>
+                                    <span *ngIf="subject.sprawko==null"><i class="fa fa-clock"></i></span>    
+                            </div>
+                            <div class="col-2">{{l.notatka}}</div> 
+                        </div>
+                    <div *ngIf="trash_laborki==false"class="row">
+                        <div class="col-2" >{{l.kiedy}}</div>
+                        <div class="col-3">{{l.co}}</div>
+                        <div class="col-2">W
+                                <span *ngIf="subject.wejsciowka==true"><i class="fa fa-check"></i></span>
+                                <span *ngIf="subject.wejsciowka==false"><i class="fa fa-times"></i></span>
+                                <span *ngIf="subject.wejsciowka==null"><i class="fa fa-clock"></i></span>
+                        </div>
+                        <div class="col-2">S
+                                <span *ngIf="subject.sprawko==true"><i class="fa fa-check"></i></span>
+                                <span *ngIf="subject.sprawko==false"><i class="fa fa-times"></i></span>
+                                <span *ngIf="subject.sprawko==null"><i class="fa fa-clock"></i></span>
+                        </div>
+                        <div class="col-3">{{l.notatka}}</div> 
+                    </div>
+                  </div>
+                  <!-- praca domowa-->
+                  <div *ngFor="let l of subject.cwiczenia, let i=index" (click)="edit(l,'cwiczenia')" class="single" [ngClass]="{'zaliczone':(subject.wejsciowka==true&&subject.sprawko==true),'niezaliczone':(subject.wejsciowka==false||subject.sprawko==false)}">  
+                        <div *ngIf="trash_laborki==true" class="row">
+                                <div class="col-1"><button class="btn btn-small " (click)="deleteItem('cwiczenia',i)">X</button></div>
+                                <div class="col-2" >{{l.kiedy}}</div>
+                                <div class="col-2">{{l.co}}</div>
+                                <div class="col-2">
+                                        <span *ngIf="l.zaliczone==true"><i class="fa fa-check"></i></span>
+                                        <span *ngIf="l.zaliczone==false"><i class="fa fa-times"></i></span>
+                                        <span *ngIf="l.zaliczone==null"><i class="fa fa-clock"></i></span>
+                                </div>
+                                <div class="col-4">{{l.notatka}}</div> 
+                            </div>
+                        <div *ngIf="trash_laborki==false"class="row">
+                            <div class="col-2" >{{l.kiedy}}</div>
+                            <div class="col-3">{{l.co}}</div>
+                            <div class="col-2">
+                                    <span *ngIf="l.zaliczone==true"><i class="fa fa-check"></i></span>
+                                    <span *ngIf="l.zaliczone==false"><i class="fa fa-times"></i></span>
+                                    <span *ngIf="l.zaliczone==null"><i class="fa fa-clock"></i></span>
+                            </div>
+                            
+                            <div class="col-5">{{l.notatka}}</div> 
+                        </div>
+                      </div>
+             </div>
+           
+            <div class="col-6 notes " id="labNotes">
+                    <!--buttons-->
+                    <div class="row">          
+                            <div class="col-8 title ">
+                            </div>
+                            <div class="title col-4">
+                                <button class="btn btn-small btn-secondary" [routerLink]="['/',subject._id,'notatka','1']"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-small btn-secondary" (click)="editing(4)"><i class="fa fa-wrench"></i></button>
+                                <button class="btn btn-small btn-secondary" (click)="trash_labNotes=!trash_labNotes"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    <!--loop through lab notes-->
+                    <div *ngFor="let note of subject.labNotatki, let i = index" class="single" (click)="edit(note,'labNotatki')">                
+                         <div *ngIf="trash_labNotes==true" class="row">
+                            <div class="col-1"><button class="btn btn-small" (click)="deleteItem('labNotatki',i)">X</button></div>
+                            <div class="col-2">{{note.kiedy}}</div>
+                            <div class="col-2">Notatka</div>
+                            <div class="col-6">{{note.description}}</div> 
+                        </div>
+                    <div *ngIf="trash_labNotes==false"class="row">
+                        <div class="col-2">{{note.kiedy}}</div>
+                        <div class="col-3">Notatka</div>
+                        <div class="col-7">{{note.description}}</div> 
+                    </div>
+                </div>
+                <!--loop through projekt-->
+                <div *ngFor="let note of subject.pNotatki, let i = index" class="single" (click)="edit(note,'pNotatki')">                
+                        <div *ngIf="trash_labNotes==true" class="row">
+                           <div class="col-1"><button class="btn btn-small" (click)="deleteItem('pNotatki',i)">X</button></div>
+                           <div class="col-2">{{note.kiedy}}</div>
+                           <div class="col-2">Notatka</div>
+                           <div class="col-6">{{note.description}}</div> 
+                       </div>
+                   <div *ngIf="trash_labNotes==false"class="row">
+                       <div class="col-2">{{note.kiedy}}</div>
+                       <div class="col-3">Notatka</div>
+                       <div class="col-7">{{note.description}}</div> 
+                   </div>
+               </div>
+               <!--loop through pd notes-->
+               <div *ngFor="let note of subject.cwNotatki, let i = index" class="single" [routerLink]="['/page404', subject._id]">                
+                    <div *ngIf="trash_labNotes==true" class="row">
+                       <div class="col-1"><button class="btn btn-small" (click)="deleteItem('cwNotatki',i)">X</button></div>
+                       <div class="col-2">{{note.kiedy}}</div>
+                       <div class="col-2">Notatka</div>
+                       <div class="col-6">{{note.description}}</div> 
+                   </div>
+               <div *ngIf="trash_labNotes==false"class="row">
+                   <div class="col-2">{{note.kiedy}}</div>
+                   <div class="col-3">Notatka</div>
+                   <div class="col-7">{{note.description}}</div> 
+               </div>
+           </div>
+            </div>
+        </div>
+</div>
+
+<!--
+<div id="labAddingNote" class="second-view">
+    <textarea #labNote placeholder="Wpisz notatkę..."></textarea>
+    <button (click)="addToLabNotes(labNote.value);labNote.value=''">Add</button>
+    <button (click)="exitAddToLabNotes()">Exit</button>
+</div>
+<div id="wAddingNote" class="second-view">
+      
+        <textarea #WNote placeholder="Wpisz notatkę..."></textarea>
+        <button (click)="addToLabNotes(WNote.value);WNote.value=''">Add</button>
+        <button (click)="exitAddToLabNotes('w')">Exit</button>
+    </div>
+<div id="pAddingNote" class="second-view">
+            Projekt
+                <textarea #PNote placeholder="Wpisz notatkę..."></textarea>
+                <button (click)="addToLabNotes(PNote.value);PNote.value=''">Add</button>
+                <button (click)="exitAddToLabNotes()">Exit</button>
+</div>
+<div id="cwAddingNote" class="second-view">
+        Praca domowa
+            <textarea #PNote placeholder="Wpisz notatkę..."></textarea>
+            <button (click)="addToLabNotes(PNote.value);PNote.value=''">Add</button>
+            <button (click)="exitAddToLabNotes()">Exit</button>
+</div>
+<div id="labAdding" class="second-view">
+    labka
+    <textarea #lab placeholder="Wpisz notatkę..."></textarea>
+        <button (click)="addToMain(lab.value)">Add</button>
+        <button (click)="exitAddToMain()">Exit</button>
+</div>
+<div id="pAdding" class="second-view">
+projekt<textarea #p placeholder="Wpisz notatkę..."></textarea>
+        <button (click)="addToMain(p.value)">Add</button>
+        <button (click)="exitAddToMain()">Exit</button>
+</div>
+<div id="cwAdding" class="second-view">
+    praca domowa
+    <textarea #cw placeholder="Wpisz notatkę..."></textarea>
+        <button (click)="addToMain(cw.value)">Add</button>
+        <button (click)="exitAddToMain()">Exit</button>
+</div>
+<div id="wAddingW" class="second-view">
+        <input  type="date" placeholder="data">
+        <input  type="text" placeholder="Co">
+kolos<textarea #w placeholder="Wpisz notatkę..."></textarea>
+        <button (click)="addToMain(w.value,'a')">Add</button>
+        <button (click)="exitAddToMain('a')">Exit</button>
+</div>
+<div id="wAddingE" class="second-view">
+egzamin<textarea #e placeholder="Wpisz notatkę..."></textarea>
+        <button (click)="addToMain(e.value,'a')">Add</button>
+        <button (click)="exitAddToMain('a')">Exit</button>
+</div>
+
+<div id="wykladEdit" class="second-view">
+    {{dataToShow.kiedy}}
+</div>
+<div id="wNotatkiEdit" class="second-view">
+    w notatki edit
+</div>
+<div id="labNotatkiEdit" class="second-view">
+    lab notes edit
+</div>
+<div id="pNotatkiEdit" class="second-view">
+    p notes edit
+</div>
+<div id="cwNotatkiEdit" class="second-view">
+        <textarea #cw >{{dataToShow.description}}</textarea>
+        <button (click)="editValues('cwNotatki',cw.value)">Add</button>
+        <button (click)="exitAddToMain()">Exit</button>
+</div>
+<div id="laborkiEdit" class="second-view">
+    Lab edit
+</div>
+-->

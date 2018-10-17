@@ -1,0 +1,7 @@
+
+<button class="btn btn-default" (click)="back()">Back</button>
+<div class="jumbotron">
+Notatka<br> <textarea #notatka></textarea><Br>
+Dodaj do wykładu : <input type="checkbox" [(ngModel)]="notatkaW"><br>
+<button class="btn btn-default" (click)="add(notatka.value)">Dodaj</button>
+</div>

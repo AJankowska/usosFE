@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+.zaliczone{
+    background-color:greenyellow;
+}
+.niezaliczone{
+    background-color:orangered;
+}
+.sticker{
+    background-color:black;
+    color:white;
+    text-align: center;
+}
+.badge{
+    background: grey;
+}
+.up{
+    margin-bottom:20px;
+    text-align: center;
+    font-weight: 600;
+}
+.jumbotron{
+    height: auto;
+    margin-bottom:10px;
+    padding:10px 0px;
+    
+}
+body{
+    cursor: pointer;
+}
