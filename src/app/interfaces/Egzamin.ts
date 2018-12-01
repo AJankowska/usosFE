@@ -1,5 +1,5 @@
 export interface Egzamin{
-    kiedy:Date;
+    kiedy:String;
     zaliczony:Boolean|null;
     notatka:String;
 }

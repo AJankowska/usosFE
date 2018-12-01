@@ -1,6 +1,6 @@
 export interface Kolokwium{
     co:String,
-    kiedy:Date,
+    kiedy:String,
     zaliczone:Boolean|null,
     notatka:String
 }

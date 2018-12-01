@@ -1,0 +1,26 @@
+editing
+<button class="btn btn-default" (click)="back()">Back</button>
+<div class="jumbotron">
+    Co<input type="text" [(ngModel)]="co">
+    Kiedy<input type="data" [(ngModel)]="kiedy">
+    <div *ngIf="item.projekt">Zaliczone <input type="checkbox" [(ngModel)]="zal"></div>
+    <div *ngIf="item.laborki">Wejsciowka 
+      <select [(ngModel)]="wejsciowka">
+        <option value="null" active>...</option>
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+      Sprawko <select [(ngModel)]="sprawko">
+          <option value="null" active>...</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+
+    </div>
+    
+    <div class="notatka" *ngIf="!item.projekt">
+     Notatka <br><textarea [(ngModel)]="notatka"></textarea>
+     <button class="btn btn-default" (click)="edit()">Edytuj</button>
+    </div>
+    <button class="btn btn-default" *ngIf="item.projekt" (click)="edit()">Edytuj</button>
+    </div>

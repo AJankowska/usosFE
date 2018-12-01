@@ -1,4 +1,4 @@
 export interface Notatka{
-    kiedy:Date,
+    kiedy:String,
     description:String
 }

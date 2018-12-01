@@ -26,13 +26,13 @@ category
   }
   add(notatka:string){
     let note:Notatka={
-      kiedy: new Date(),
+      kiedy: new Date().toString(),
       description:notatka
     }
     if(this.notatkaW) this.category = "wNotatki";
     else (this.subject.laborki)? this.category="labNotatki": this.subject.cwiczenia? this.category="cwNotatki":this.category="pNotatki";
     console.log('dupa1 ' + this.category);
     this._service.add(note,this.category);
-    window.history.go(-1);
+    //window.history.go(-1);
   }
 }

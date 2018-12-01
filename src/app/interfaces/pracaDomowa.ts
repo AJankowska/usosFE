@@ -1,6 +1,6 @@
 export interface PracaDomowa{
     co:String,
-    kiedy:Date,
+    kiedy:String,
     notatka:String,
     zaliczone:Boolean|null
 }

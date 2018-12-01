@@ -29,10 +29,10 @@ category:string;
   add(notatka:string){
     let note
     if(this.subject.wejsciowka)
-    {this.category="laborki";
+    {this.category="laborki"
       note={
        co:this.co,
-       kiedy:this.kiedy,
+       kiedy:this.kiedy.toString(),
         wejsciowka:this.wejsciowka,
         sprawko:this.sprawko,
         zaliczone:null,
@@ -43,19 +43,19 @@ category:string;
    { this.category="cwiczenia"
    note={
      co:this.co,
-      kiedy:this.kiedy,
+      kiedy:this.kiedy.toString(),
      zaliczone:null,
       notatka:notatka
      }
    }
-  else {this.category="projekt";
+  else {this.category="projekt"
    note={
       co:this.co,
-      kiedy:this.kiedy
+      kiedy:this.kiedy.toString()
       }
     };
 
     this._service.add(note,this.category);
-    window.history.go(-1);
+    //window.history.go(-1);
   }
 }

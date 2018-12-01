@@ -30,13 +30,13 @@ export class WykladComponent implements OnInit {
     if(this.subject.wyklad[0].co){
        note={
         co:this.co,
-        kiedy:this.kiedy,
+        kiedy:this.kiedy.toString(),
         zaliczone:null,
         notatka:notatka
       }
     }
     else note={
-      kiedy:this.kiedy,
+      kiedy:this.kiedy.toString(),
       zaliczone:null,
       notatka:notatka
     }

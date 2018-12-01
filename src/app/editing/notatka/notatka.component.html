@@ -1,0 +1,11 @@
+
+<button class="btn btn-default" (click)="back()">Back</button>
+
+<div *ngIf="toczenie"> Toczenie kuli .... </div>
+
+<div class="jumbotron">
+Notatka<br> 
+<textarea  [(ngModel)]="notatka"></textarea><Br>
+
+<button class="btn btn-default" (click)="edit()">Edytuj</button>
+</div>

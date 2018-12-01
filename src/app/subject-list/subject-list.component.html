@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <div class="jumbotron row" *ngFor="let subject of source, let i =index" [ngClass]="{'zaliczone':subject.zaliczone==true,'niezaliczone':subject.zaliczone==false}" [routerLink]="['/', subject._id]">
+  <div class="jumbotron row" *ngFor="let subject of source, let i =index" [ngClass]="{'zaliczone':subject.zaliczone==true,'niezaliczone':subject.zaliczone==false}"
+    [routerLink]="['/', subject._id]">
     <div class="col-2">{{i+1}}</div>
     <div class="col-6">{{subject.name}}</div>
     <div class="col-2">
@@ -10,8 +11,8 @@
     <div class="col-2">{{subject.ects}} ECTS</div>
   </div>
   <div class="fixed-bottom sticker" *ngIf="ECTS">
-    Masz 
-    <span class="badge">{{ECTS[0].yourECTS}}</span> ECTS z 
+    Masz
+    <span class="badge">{{ECTS[0].yourECTS}}</span> ECTS z
     <span class="badge">{{ECTS[0].allECTS}} </span> ECTS
     możliwych do zdobycia
   </div>

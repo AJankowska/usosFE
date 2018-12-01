@@ -1,0 +1,7 @@
+<button class="btn btn-default" (click)="back()">Back</button>
+<div class="jumbotron">
+  <label>Zal</label> <input *ngIf="zal!=null && zal!=undefined" type="checkbox" [(ngModel)]="zal"> <input *ngIf="zal==null" type="checkbox" [(ngModel)]="zal" value="false"><br>
+ <label>kiedy</label><input [(ngModel)]="kiedy" type="date"><br>
+<label>Notatka</label><br><textarea [(ngModel)]="notatka"></textarea><br>
+ <button class="btn btn-default" (click)="edit()"></button>
+</div>
